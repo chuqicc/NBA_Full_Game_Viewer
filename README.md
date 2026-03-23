@@ -146,7 +146,7 @@ full_game_viewer/
 ### Architecture
 
 ```
-match.json
+sportvu.json
     │
     ▼
 GameTimeline.load()
@@ -166,9 +166,8 @@ FullGameViewer
 
 ## Acknowledgements
 
-- Player-tracking data format: [NBA SportVU](https://www.nba.com/stats/)
 - Court image and original single-event animation structure inspired by
-  [sealneaward/nba-movement-data](https://github.com/sealneaward/nba-movement-data)
+  [linouk23/NBA-Player-Movements](https://github.com/linouk23/NBA-Player-Movements)
 
 ---
 

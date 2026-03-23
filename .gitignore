@@ -1,7 +1,8 @@
 __pycache__/
 *.pyc
 *.pyo
-*.json
+# *.json  # allow data/ examples below
+!data/*.json
 *.gif
 *.png
 *.mp4
