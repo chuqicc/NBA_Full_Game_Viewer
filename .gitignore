@@ -8,3 +8,4 @@ __pycache__/
 !assets/*.png
 *.mp4
 .DS_Store
+.history
