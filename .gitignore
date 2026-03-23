@@ -4,6 +4,7 @@ __pycache__/
 # *.json  # allow data/ examples below
 !data/*.json
 *.gif
-*.png
+# *.png  # allow assets/ screenshots below
+!assets/*.png
 *.mp4
 .DS_Store
