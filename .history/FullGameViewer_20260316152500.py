@@ -161,7 +161,10 @@ class FullGameViewer:
         self.ax_help = self.fig.add_axes([0.692, BTN_Y, 0.028, BTN_H])
 
     def _draw_court(self):
-        court_path = 'courta.png'
+        court_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            'courta.png'
+        )
         court = plt.imread(court_path)
         self.court_ax.imshow(
             court, zorder=0,
