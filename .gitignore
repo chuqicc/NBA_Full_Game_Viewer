@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 *.pyo
+.ipynb_checkpoints/
 # *.json  # allow data/ examples below
 !data/*.json
 *.gif
@@ -8,4 +9,4 @@ __pycache__/
 !assets/*.png
 *.mp4
 .DS_Store
-.history
+.history/
