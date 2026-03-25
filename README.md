@@ -27,7 +27,7 @@ Interactive desktop tools for watching NBA games and individual possessions from
 
 ---
 
-## Quick Start
+## Quick Start (RUN)
 
 ### Full Game
 
@@ -39,10 +39,29 @@ python full_game_main.py --path data/0021500485.json
 ### Single Possession
 
 ```bash
+
 python possession_viewer.py --path data/0021500001_1_5.csv --players data/player_data.csv
+
+# personal_folder:
+# python possession_viewer.py --path E:\workspace_chuqi\phd_nba\mantoman\data\long_possessions\0021500002_4_479.csv
+```
+Both files in `data/` are used as defaults if `--path` / `--players` are omitted.
+
+### Save as MP4
+
+Add `--save` to export the possession as a video file instead of opening the interactive viewer.
+
+```bash
+python possession_viewer.py --path data/0021500001_1_5.csv --save output.mp4
 ```
 
-Both files in `data/` are used as defaults if `--path` / `--players` are omitted.
+The file is saved to the current working directory unless you give a full path:
+
+```bash
+python possession_viewer.py --path data/0021500001_1_5.csv --save E:\videos\output.mp4
+```
+
+> **Requires ffmpeg** — install with `winget install ffmpeg` and verify with `ffmpeg -version`.
 
 ---
 

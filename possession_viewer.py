@@ -707,6 +707,24 @@ class PossessionViewer:
     def show(self):
         plt.show()
 
+    def save_mp4(self, output_path, fps=25):
+        """Render all frames and write to an MP4 file (requires ffmpeg)."""
+        from matplotlib.animation import FuncAnimation, FFMpegWriter
+        self._ball_trail.clear()
+
+        def update(frame_idx):
+            self._render(frame_idx)
+            return []
+
+        anim = FuncAnimation(
+            self.fig, update,
+            frames=self.n_frames, interval=1000 // fps, blit=False
+        )
+        writer = FFMpegWriter(fps=fps)
+        print(f'Saving {self.n_frames} frames → {output_path} ...')
+        anim.save(output_path, writer=writer, dpi=100)
+        print(f'Done → {output_path}')
+
 
 # ── CLI entry point ───────────────────────────────────────────────────────────
 
@@ -724,6 +742,12 @@ def main():
         default=os.path.join(_here, 'data', 'player_data.csv'),
         help='Path to player_data.csv (default: data/player_data.csv)'
     )
+    parser.add_argument(
+        '--save',
+        default=None,
+        metavar='OUTPUT.mp4',
+        help='Save the possession animation to an MP4 file instead of showing it interactively (requires ffmpeg)'
+    )
     args = parser.parse_args()
 
     if not os.path.exists(args.path):
@@ -738,8 +762,11 @@ def main():
 
     basename = os.path.basename(args.path)
     title    = f'Possession — {basename}'
-    viewer   = PossessionViewer(frames, player_dict, title=title, filename=basename)
-    viewer.show()
+    viewer = PossessionViewer(frames, player_dict, title=title, filename=basename)
+    if args.save:
+        viewer.save_mp4(args.save)
+    else:
+        viewer.show()
 
 
 if __name__ == '__main__':
